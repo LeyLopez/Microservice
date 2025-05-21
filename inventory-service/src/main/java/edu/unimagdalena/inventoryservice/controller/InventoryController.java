@@ -24,7 +24,7 @@ public class InventoryController {
         return Flux.just(inventoryService.findAll());
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Mono<Inventory> getInventoryById(@PathVariable ("id") UUID id) {
         return Mono.justOrEmpty(inventoryService.findById(id));
     }
@@ -34,12 +34,12 @@ public class InventoryController {
         return Mono.just(inventoryService.save(inventory));
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public Mono<Inventory> updateInventory(@PathVariable ("id") UUID id, @RequestBody Inventory inventory) {
         return Mono.justOrEmpty(inventoryService.update(id, inventory));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public Mono<Void> deleteInventory(@PathVariable ("id") UUID id) {
         inventoryService.deleteById(id);
         return Mono.empty();
