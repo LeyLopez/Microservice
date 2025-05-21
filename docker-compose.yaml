@@ -30,6 +30,8 @@ services:
       - "5433:5432"
     volumes:
       - order_pgdata:/var/lib/postgresql/data
+    networks:
+      - eureka-network
 
 
   order-service:
@@ -46,6 +48,8 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     ports:
       - "8085:8085"
+    networks:
+      - eureka-network
 
 
   inventory-postgres:
@@ -59,6 +63,8 @@ services:
       - "5434:5432"
     volumes:
       - inventory_pgdata:/var/lib/postgresql/data
+    networks:
+      - eureka-network
 
 
   inventory-service:
@@ -75,6 +81,8 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     ports:
       - "8083:8083"
+    networks:
+      - eureka-network
 
 
 
@@ -89,6 +97,8 @@ services:
       - "5435:5432"
     volumes:
       - payment_pgdata:/var/lib/postgresql/data
+    networks:
+      - eureka-network
 
 
 
@@ -107,6 +117,8 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     ports:
       - "8084:8084"
+    networks:
+      - eureka-network
 
 
   mongo:
@@ -116,6 +128,8 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+    networks:
+      - eureka-network
 
 
   product-service:
@@ -130,6 +144,8 @@ services:
 
     ports:
       - "8082:8082"
+    networks:
+      - eureka-network
 
 
 
